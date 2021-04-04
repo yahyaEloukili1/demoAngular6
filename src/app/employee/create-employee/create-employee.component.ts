@@ -27,4 +27,15 @@ export class CreateEmployeeComponent implements OnInit {
     console.log(this.employeeForm.get('fullName').value)
     console.log(this.employeeForm.value)
   }
+  onLoadDataClick(){
+    this.employeeForm.patchValue({
+      fullName : 'Pregim technologies',
+      email : 'pragim@pragimtech.com',
+      // skills : {
+      //   skillName : 'c#',
+      //   experienceInYears :5,
+      //   proficiency : 'beginner'
+      // }
+    })
+  }
 }
