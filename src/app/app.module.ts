@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateEmployeeComponent } from './employee/create-employee/create-employee.component';
 import { ListEmployeesComponent } from './employee/list-employees/list-employees.component';
-
+import { ReactiveFormsModule } from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,6 +14,7 @@ import { ListEmployeesComponent } from './employee/list-employees/list-employees
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
