@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormControl,FormBuilder } from "@angular/forms";
+import {FormGroup, FormBuilder,Validators } from "@angular/forms";
 import { TestService } from "../../services/test.service";
 @Component({
   selector: 'app-create-employee',
@@ -12,7 +12,7 @@ export class CreateEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
-      fullName : [''],
+      fullName : ['',[Validators.required,Validators.minLength(2),Validators.maxLength(10)]],
       email : [''],
       skills : this.fb.group({
         skillName: [''],
@@ -24,7 +24,7 @@ export class CreateEmployeeComponent implements OnInit {
   }
   onSubmit(): void{
     console.log(this.employeeForm.controls.fullName.value)
-    console.log(this.employeeForm.get('fullName').value)
+    console.log(this.employeeForm.get('fullName').errors)
     console.log(this.employeeForm.value)
   }
   onLoadDataClick(){
