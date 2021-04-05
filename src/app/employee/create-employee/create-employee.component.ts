@@ -22,20 +22,23 @@ export class CreateEmployeeComponent implements OnInit {
     })
 
   }
+  logKeyValuePairs(group: FormGroup): void{
+      Object.keys(group.controls).forEach((key : string)=>{
+       const abstractControl =  group.get(key)
+       if(abstractControl instanceof FormGroup){
+         this.logKeyValuePairs(abstractControl)
+       }else{
+         abstractControl.disable()
+       }
+      });
+
+  }
   onSubmit(): void{
     console.log(this.employeeForm.controls.fullName.value)
     console.log(this.employeeForm.get('fullName').errors)
     console.log(this.employeeForm.value)
   }
   onLoadDataClick(){
-    this.employeeForm.patchValue({
-      fullName : 'Pregim technologies',
-      email : 'pragim@pragimtech.com',
-      // skills : {
-      //   skillName : 'c#',
-      //   experienceInYears :5,
-      //   proficiency : 'beginner'
-      // }
-    })
+    this.logKeyValuePairs(this.employeeForm);
   }
 }
